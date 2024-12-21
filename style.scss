@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins&display=swap");
+
+$scale: 100px;
+$time: 1s;
+
+@mixin common($a, $b, $c, $d, $e, $f) {
+  display: flex;
+  flex-direction: $a;
+  justify-content: $b;
+  align-items: $c;
+  width: $d;
+  height: $e;
+  background-color: $f;
+  transition: all $time ease;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  body {
+    @include common(column, center, center, 100%, white, null);
+    min-height: 100vh;
+    font-family: "Poppins";
+    color: #333A3F;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  @media (min-width: 500px) {
+    width: 50%;
+  }
+  .title {
+    text-align: center;
+  }
+  .content {
+    text-align: center;
+
+    .line1 {
+      color: #333A3F;
+      transition: color 0.5s ease;
+    }
+
+    .line2 {
+      color: transparent;
+      transition: color 0.5s ease;
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .btn {
+    align-self: flex-end;
+    margin: 10px;
+  }
+
+  .box {
+    @include common(column, center, null, $scale, $scale/2, #333A3F);
+    position: relative;
+    border-radius: $scale/4;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    .ball {
+      @include common(null, null, null, $scale/2, $scale/2, grey);
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid #333A3F;
+      outline: none;
+      transition: transform 0.5s ease;
+    }
+    .scenary {
+      @include common(row, space-between, null, null, null, null);
+      padding: 3px 10px 0px 10px;
+      img {
+        width: $scale/3;
+      }
+    }
+  }
+}
